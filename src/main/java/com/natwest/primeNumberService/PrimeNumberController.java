@@ -1,9 +1,11 @@
 package com.natwest.primeNumberService;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.LongStream;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,52 +13,36 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PrimeNumberController {
 
-	@GetMapping("/primes/{initial}")
-	public PrimeNumber greeting(@PathVariable Long initial) {
+	@Autowired
+    private PrimeNumberService primeNumberService;
+	
+	@GetMapping("/primes/{initial}/{algorithm}/{javaVer}")
+	public PrimeNumber fetchPrimeNumbers(@PathVariable Integer initial, @PathVariable String algorithm, @PathVariable String javaVer) {
 		
-		/*int i =0;
-	    int num =0;
-	    //Empty String
-	    List  primeNumbers = new ArrayList();
-	    System.out.println("Enter the value of n:");
-	    
-	    for (i = 1; i <= initial; i++)  	   
-	    { 		 		  
-	       int counter=0; 		  
-	       for(num =i; num>=1; num--)
-	       {
-	    	   if(i%num==0)
-	    	   {
-	    		   counter = counter + 1;
-	    	   }
-	       }
-	       if (counter ==2)
-	       {
-	    	   //Appended the Prime number to the String
-	    	   primeNumbers.add(i);
-	       }	
-	    }	
-	    
-	    System.out.println("Prime numbers from 1 to " + initial + " are :");
-	    System.out.println(primeNumbers);*/
+		Instant start = Instant.now();
 		
-		List primeNumbers = primeNumbersTill(initial);
+		List primeNumbers = new ArrayList();
 		
+		if(algorithm != null && algorithm.equals("basicPrimeAlgo")) {
+			primeNumbers = primeNumberService.primeNumbersBasicAlgo(initial, javaVer);
+		}
+		else if(algorithm != null && algorithm.equals("sieveOfEratosthenes")) {
+			primeNumbers = primeNumberService.sieveOfEratosthenes(initial);
+		}
+		else if(algorithm != null && algorithm.equals("primeNumbersBruteForce")) {
+			primeNumbers = primeNumberService.primeNumbersBruteForce(initial);
+		}
+		else if(algorithm != null && algorithm.equals("usingBigInteger")) {
+			primeNumbers = primeNumberService.primeNumbersBigInteger(initial);
+		}
+		
+		Instant end = Instant.now();
+		
+		String fetchingTime = Duration.between(start, end).toString();
+		System.out.println("Total Prime Numbers from 1 to " + initial + " using " + algorithm + " are : " + primeNumbers.size() + ". Fetching Time : " + fetchingTime.substring(2, fetchingTime.length()-1) + " seconds.");
+	    		
 		return new PrimeNumber(initial, primeNumbers);
 	}
 	
-	public static List primeNumbersTill(Long n) {
-	    return LongStream.rangeClosed(2, n)
-	      .filter(x -> isPrime(x)).boxed()
-	      .collect(Collectors.toList());
-	}
 	
-	/*private static boolean isPrime(Long number) {
-		return LongStream.rangeClosed(2, (long) (Math.sqrt(number)))
-	      .allMatch(n -> x % n != 0);
-	}*/
-	
-	public static boolean isPrime(long number) {
-	    return number>1 && LongStream.rangeClosed(2, number / 2).noneMatch(i -> number % i == 0);
-	}
 }
