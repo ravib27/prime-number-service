@@ -3,7 +3,7 @@ This is a RESTful service which calculates and returns all the prime numbers up 
 
 Example:
 
-The REST call would look something like http://your.host.com/primes/10 and should return JSON content: 
+The REST call would look something like http://localhost:8080/primes/10 and would return JSON content: 
 
 {
 
