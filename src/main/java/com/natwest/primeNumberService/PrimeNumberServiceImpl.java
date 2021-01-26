@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PrimeNumberServiceImpl implements PrimeNumberService {
 
+	@Cacheable(value="primeNumberCache1")
 	public List<Integer> sieveOfEratosthenes(int n) {
 	    boolean prime[] = new boolean[n + 1];
 	    Arrays.fill(prime, true);
@@ -31,7 +33,7 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 	    return primeNumbers;
 	}
 	
-	
+	@Cacheable(value="primeNumberCache2")
 	public List<Integer> primeNumbersBruteForce(int n) {
 	    List<Integer> primeNumbers = new LinkedList<>();
 	    if (n >= 2) {
@@ -99,6 +101,7 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 	    return number>1 && IntStream.rangeClosed(2, number / 2).noneMatch(i -> number % i == 0);
 	}
 	
+	@Cacheable(value="primeNumberCache3")
 	public List<Integer> primeNumbersBigInteger(int n) {
 		List<Integer> primeNumbers = new LinkedList<>();
 		int val = 0;

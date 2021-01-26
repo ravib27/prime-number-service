@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,8 +18,10 @@ public class PrimeNumberController {
 	@Autowired
     private PrimeNumberService primeNumberService;
 	
-	@GetMapping("/primes/{initial}/{algorithm}/{javaVer}")
-	public PrimeNumber fetchPrimeNumbers(@PathVariable Integer initial, @PathVariable String algorithm, @PathVariable String javaVer) {
+	@GetMapping(value = "/primes/{initial}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+	public PrimeNumber fetchPrimeNumbers(@PathVariable Integer initial, 
+			@RequestParam(defaultValue="sieveOfEratosthenes") String algorithm, 
+			@RequestParam(defaultValue="java7") String javaVer) {
 		
 		Instant start = Instant.now();
 		

@@ -2,7 +2,6 @@ package com.natwest.primeNumberService;
 
 import java.util.List;
 
-
 public class PrimeNumber {
 
 	private final Integer initial;
