@@ -13,6 +13,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class PrimeNumberServiceImpl implements PrimeNumberService {
 
+	/** 
+	* @author Ravi Bhuva
+	* @param int
+	* @return List<Integer>
+	* 
+	* This method is used to find out prime numbers till a given number
+	* using the Sieve Of Eratosthenes algorithm
+	* 
+	*/
+	
 	@Cacheable(value="primeNumberCache1")
 	public List<Integer> sieveOfEratosthenes(int n) {
 	    boolean prime[] = new boolean[n + 1];
@@ -32,6 +42,17 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 	    }
 	    return primeNumbers;
 	}
+	
+	
+	/** 
+	* @author Ravi Bhuva
+	* @param int
+	* @return List<Integer>
+	* 
+	* This method is used to find out prime numbers till a given number
+	* using the Brute Force algorithm
+	* 
+	*/
 	
 	@Cacheable(value="primeNumberCache2")
 	public List<Integer> primeNumbersBruteForce(int n) {
@@ -56,6 +77,18 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 	    return true;
 	}
 	
+	
+	/** 
+	* @author Ravi Bhuva
+	* @param int, String
+	* @return List<Integer>
+	* 
+	* This method is used to find out prime numbers till a given number
+	* using the Basic algorithm to check for prime numbers
+	* 
+	*/
+	
+	@Cacheable(value="primeNumberCache3")
 	public List<Integer> primeNumbersBasicAlgo(int n, String javaVer) {
 		List<Integer> primeNumbers = new LinkedList<>();
 		if(javaVer != null && javaVer.equals("java7")) {
@@ -92,16 +125,22 @@ public class PrimeNumberServiceImpl implements PrimeNumberService {
 	      .collect(Collectors.toList());
 	}
 	
-	/*private boolean isPrime(Long number) {
-		return LongStream.rangeClosed(2, (long) (Math.sqrt(number)))
-	      .allMatch(n -> x % n != 0);
-	}*/
-	
 	private boolean isPrime(int number) {
 	    return number>1 && IntStream.rangeClosed(2, number / 2).noneMatch(i -> number % i == 0);
 	}
 	
-	@Cacheable(value="primeNumberCache3")
+	
+	/** 
+	* @author Ravi Bhuva
+	* @param int
+	* @return List<Integer>
+	* 
+	* This method is used to find out prime numbers till a given number
+	* using the Big Integer for large integer range. 
+	* 
+	*/
+	
+	@Cacheable(value="primeNumberCache4")
 	public List<Integer> primeNumbersBigInteger(int n) {
 		List<Integer> primeNumbers = new LinkedList<>();
 		int val = 0;
