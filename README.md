@@ -32,6 +32,6 @@ The project has caching implemented to improve performance.
 The project supports multiple algorithms that can be switched based on optional parameters (implemented using Request Params)
 
 
-Optional Extensions
+Optional Extensions:
 
 Deploy the solution to a chosen platform that we can access.
