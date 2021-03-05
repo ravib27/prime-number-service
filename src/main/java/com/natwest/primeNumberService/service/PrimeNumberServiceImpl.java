@@ -1,4 +1,4 @@
-package com.natwest.primeNumberService;
+package com.natwest.primeNumberService.service;
 
 import java.math.BigInteger;
 import java.util.Arrays;

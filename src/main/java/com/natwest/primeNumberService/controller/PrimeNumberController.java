@@ -1,4 +1,4 @@
-package com.natwest.primeNumberService;
+package com.natwest.primeNumberService.controller;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.natwest.primeNumberService.PrimeNumber;
+import com.natwest.primeNumberService.service.PrimeNumberService;
 
 @RestController
 public class PrimeNumberController {

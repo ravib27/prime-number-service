@@ -21,8 +21,8 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.natwest.primeNumberService.PrimeNumber;
-import com.natwest.primeNumberService.PrimeNumberController;
-import com.natwest.primeNumberService.PrimeNumberService;
+import com.natwest.primeNumberService.controller.PrimeNumberController;
+import com.natwest.primeNumberService.service.PrimeNumberService;
 
 
 @RunWith(SpringRunner.class)

@@ -1,4 +1,4 @@
-package com.natwest.primeNumberService;
+package com.natwest.primeNumberService.service;
 
 import java.util.List;
 
