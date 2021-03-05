@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -38,6 +40,8 @@ public class PrimeNumberControllerUnitTest {
 	private PrimeNumberService primeNumberService;
 	
 	PrimeNumber mockPrimeNumber = new PrimeNumber(10, Arrays.asList(2, 3, 5, 7));
+	
+	Logger logger = LoggerFactory.getLogger(PrimeNumberControllerUnitTest.class);
 
 	@Test
 	public void fetchPrimeNumbersWithoutRequestParamJSON() throws Exception {
@@ -53,9 +57,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		System.out.println(result.getResponse());
+		//logger.info(result.getResponse().toString());
 		String expected = "{\"initial\":10,\"primes\":[2,3,5,7]}";
-		System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);
 	}
@@ -74,9 +78,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		//System.out.println(result.getResponse());
+		//logger.info(result.getResponse());
 		String expected = "<PrimeNumber><initial>10</initial><primes><primes>2</primes><primes>3</primes><primes>5</primes><primes>7</primes></primes></PrimeNumber>";
-		//System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		//logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		assertEquals(expected, result.getResponse().getContentAsString());
 	}
 	
@@ -94,9 +98,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		System.out.println(result.getResponse());
+		//logger.info(result.getResponse().toString());
 		String expected = "{\"initial\":10,\"primes\":[2,3,5,7]}";
-		System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);
 	}
@@ -115,9 +119,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		//System.out.println(result.getResponse());
+		//logger.info(result.getResponse());
 		String expected = "<PrimeNumber><initial>10</initial><primes><primes>2</primes><primes>3</primes><primes>5</primes><primes>7</primes></primes></PrimeNumber>";
-		//System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		//logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		assertEquals(expected, result.getResponse().getContentAsString());
 	}
 	
@@ -135,9 +139,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		System.out.println(result.getResponse());
+		//logger.info(result.getResponse().toString());
 		String expected = "{\"initial\":10,\"primes\":[2,3,5,7]}";
-		System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);
 	}
@@ -156,9 +160,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		//System.out.println(result.getResponse());
+		//logger.info(result.getResponse());
 		String expected = "<PrimeNumber><initial>10</initial><primes><primes>2</primes><primes>3</primes><primes>5</primes><primes>7</primes></primes></PrimeNumber>";
-		//System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		//logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		assertEquals(expected, result.getResponse().getContentAsString());
 	}
 	
@@ -176,9 +180,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		System.out.println(result.getResponse());
+		//logger.info(result.getResponse().toString());
 		String expected = "{\"initial\":10,\"primes\":[2,3,5,7]}";
-		System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);
 	}
@@ -197,9 +201,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		//System.out.println(result.getResponse());
+		//logger.info(result.getResponse());
 		String expected = "<PrimeNumber><initial>10</initial><primes><primes>2</primes><primes>3</primes><primes>5</primes><primes>7</primes></primes></PrimeNumber>";
-		//System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		//logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		assertEquals(expected, result.getResponse().getContentAsString());
 	}
 	
@@ -217,9 +221,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		System.out.println(result.getResponse());
+		//logger.info(result.getResponse().toString());
 		String expected = "{\"initial\":10,\"primes\":[2,3,5,7]}";
-		System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);
 	}
@@ -238,9 +242,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		//System.out.println(result.getResponse());
+		//logger.info(result.getResponse());
 		String expected = "<PrimeNumber><initial>10</initial><primes><primes>2</primes><primes>3</primes><primes>5</primes><primes>7</primes></primes></PrimeNumber>";
-		//System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		//logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		assertEquals(expected, result.getResponse().getContentAsString());
 	}
 	
@@ -258,9 +262,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		System.out.println(result.getResponse());
+		//logger.info(result.getResponse().toString());
 		String expected = "{\"initial\":10,\"primes\":[2,3,5,7]}";
-		System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		JSONAssert.assertEquals(expected, result.getResponse()
 				.getContentAsString(), false);
 	}
@@ -279,9 +283,9 @@ public class PrimeNumberControllerUnitTest {
 		int status = result.getResponse().getStatus();
 		assertEquals(200, status);
 
-		//System.out.println(result.getResponse());
+		//logger.info(result.getResponse());
 		String expected = "<PrimeNumber><initial>10</initial><primes><primes>2</primes><primes>3</primes><primes>5</primes><primes>7</primes></primes></PrimeNumber>";
-		//System.out.println("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
+		//logger.info("result.getResponse() ::> " + result.getResponse().getContentAsString() + " // Context Over");
 		assertEquals(expected, result.getResponse().getContentAsString());
 	}
 }

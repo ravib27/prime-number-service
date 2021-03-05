@@ -5,6 +5,8 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +28,8 @@ public class PrimeNumberController {
 			@RequestParam(defaultValue="sieveOfEratosthenes") String algorithm, 
 			@RequestParam(defaultValue="java7") String javaVer) {
 		
+		Logger logger = LoggerFactory.getLogger(PrimeNumberController.class);
+		
 		Instant start = Instant.now();
 		
 		List primeNumbers = new ArrayList();
@@ -46,7 +50,7 @@ public class PrimeNumberController {
 		Instant end = Instant.now();
 		
 		String fetchingTime = Duration.between(start, end).toString();
-		System.out.println("Total Prime Numbers from 1 to " + initial + " using " + algorithm + " are : " + primeNumbers.size() + ". Fetching Time : " + fetchingTime.substring(2, fetchingTime.length()-1) + " seconds.");
+		logger.info("Total Prime Numbers from 1 to " + initial + " using " + algorithm + " are : " + primeNumbers.size() + ". Fetching Time : " + fetchingTime.substring(2, fetchingTime.length()-1) + " seconds.");
 	    		
 		return new PrimeNumber(initial, primeNumbers);
 	}
