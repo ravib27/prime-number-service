@@ -17,7 +17,7 @@ The REST call would look something like http://localhost:8080/primes/10 and woul
 
 Project Features:
 
-The project is written in Java 7 and 8.
+The project is written in Java.
 
 The project uses Maven to build, test and run.
 
